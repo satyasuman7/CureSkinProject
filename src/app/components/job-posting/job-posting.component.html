@@ -1,0 +1,11 @@
+<!-- job-posting.component.html -->
+<div class="post" role="listitem">
+    <h2 class="post__title">
+      <ng-container *ngIf="url; else titleTemplate">
+        <a class="post__title__link" href="{{ url }}" target="_blank" rel="noopener">{{ title }}</a>
+      </ng-container>
+      <ng-template #titleTemplate>{{ title }}</ng-template>
+    </h2>
+    <p class="post__metadata">By {{ by }} &middot; {{ time * 1000 | date: 'medium' }}</p>
+  </div>
+  

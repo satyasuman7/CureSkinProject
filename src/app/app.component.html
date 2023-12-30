@@ -1,0 +1,17 @@
+<!-- app.component.html -->
+<div class="app">
+  <h1 class="title">Hacker News Jobs Board</h1>
+  <ng-container *ngIf="jobIds === null; else jobsTemplate">
+    <p class="loading">Loading...</p>
+  </ng-container>
+  <ng-template #jobsTemplate>
+    <div>
+      <div class="jobs" role="list">
+        <app-job-posting *ngFor="let job of jobs" [url]="job.url" [by]="job.by" [time]="job.time" [title]="job.title"></app-job-posting>
+      </div>
+      <button class="load-more-button" [disabled]="fetchingJobDetails" (click)="loadMoreJobs()">
+        {{ fetchingJobDetails ? 'Loading...' : 'Load more jobs' }}
+      </button>
+    </div>
+  </ng-template>
+</div>
